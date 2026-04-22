@@ -1,0 +1,5 @@
+#N canvas 50 50 600 400 10;
+#X text 20 20 pickup.pd - sound for picking up a rotating cube;
+#X text 20 40 Uses NES Pulse 1 and Pulse 2 channels (square waves \, variable duty cycle);
+#X text 20 60 Listens for: /unity/trigger (int 0-8 \, semitone offset in C major scale);
+#X text 20 80 Outputs: audio signal;

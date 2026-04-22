@@ -25,13 +25,24 @@ Build a Pure Data patch that emulates the Ricoh 2A03 (NES) sound chip and syncs 
 
 | File | Purpose |
 |---|---|
-| `MockMidterm.pd` | **Main patch** - OSC receiver + instantiates all voices + mixer -> dac~ + instructions |
-| `pulse.pd` | Pulse voice abstraction (instantiated twice, once for Pulse 1 and once for Pulse 2) |
-| `triangle.pd` | Triangle voice abstraction |
-| `noise.pd` | Noise voice abstraction |
-| `sequencer.pd` | Step sequencer driving all four voices |
+| `MockMidterm.pd` | **Main patch** - OSC receiver + instantiates all sounds + mixer -> dac~ + instructions |
+| `pickup.pd` | Cube-pickup sound. Uses NES Pulse 1 + Pulse 2. Triggered by `/unity/trigger`. |
+| `wall.pd` | Wall-collision noise burst. Uses NES Noise channel. Triggered by `/unity/colwall`. |
+| `sequencer.pd` | Step sequencer playback. Uses NES Triangle channel. Tempo controlled by `/unity/tempo`, start/stop by `/unity/playseq`. |
 | `MockMidterm_reference.pd` | **Professor's example - do not edit.** Reference only. |
 | `BallDemo_MockMidterm/` | Unity project |
+
+### How the 4 NES channels are covered
+
+Instead of one file per channel, each sound file uses whichever channels fit that sound. All 4 required channels still end up represented:
+
+| NES Channel | Lives in |
+|---|---|
+| Pulse 1 | `pickup.pd` |
+| Pulse 2 | `pickup.pd` |
+| Triangle | `sequencer.pd` |
+| Noise | `wall.pd` |
+| (Sample player) | omitted per assignment |
 
 ---
 
@@ -39,9 +50,8 @@ Build a Pure Data patch that emulates the Ricoh 2A03 (NES) sound chip and syncs 
 
 | File | Owner |
 |---|---|
-| `pulse.pd` | Devin |
-| `noise.pd` | Devin |
-| `triangle.pd` | Partner |
+| `pickup.pd` | Devin |
+| `wall.pd` | Devin |
 | `sequencer.pd` | Partner |
 | `MockMidterm.pd` | Coordinated - only one person edits at a time |
 
@@ -134,11 +144,11 @@ Tell the other person in chat when you're done so they can pull.
 
 ## Suggested order of work
 
-1. **One of us** copies the OSC receive subpatch from `MockMidterm_reference.pd` into `MockMidterm.pd`, adds comments, sets up the mixer (4 inlets -> `*~` for per-voice volume -> sum -> `dac~`), and instantiates empty `[pulse] [pulse] [triangle] [noise] [sequencer]` boxes. Commit + push.
-2. **After pull**, we each open our abstraction files and start building voices.
+1. **One of us** copies the OSC receive subpatch from `MockMidterm_reference.pd` into `MockMidterm.pd`, adds comments, sets up the mixer (inlets -> `*~` for per-sound volume -> sum -> `dac~`), and instantiates empty `[pickup] [wall] [sequencer]` boxes. Commit + push.
+2. **After pull**, we each open our own files and start building sounds. Devin on `pickup.pd` + `wall.pd`, partner on `sequencer.pd`.
 3. Commit after every working feature - one sound that plays cleanly on trigger = one commit.
-4. Once all voices play on their own, wire the sequencer to trigger them and tune timing.
-5. Test from Unity: send OSC messages from the scene and confirm everything responds.
+4. Test each sound in isolation before wiring into the main patch.
+5. Test from Unity: send OSC messages from the scene and confirm each sound responds correctly.
 6. Final pass: clean up, add instructions text to the main patch, double-check for clicks/pops.
 
 ---

@@ -1,0 +1,5 @@
+#N canvas 50 50 600 400 10;
+#X text 20 20 wall.pd - noise burst when the player runs into a wall;
+#X text 20 40 Uses NES Noise channel;
+#X text 20 60 Listens for: /unity/colwall (bang);
+#X text 20 80 Outputs: audio signal;
