@@ -1,0 +1,4 @@
+#N canvas 50 50 600 400 10;
+#X text 20 20 sequencer.pd - step sequencer driving all 4 voices;
+#X text 20 40 Inlets: start/stop \, bpm;
+#X text 20 60 Outlets: pulse1 trigger \, pulse2 trigger \, triangle trigger \, noise trigger;
