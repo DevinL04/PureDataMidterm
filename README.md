@@ -52,7 +52,7 @@ Instead of one file per channel, each sound file uses whichever channels fit tha
 |---|---|
 | `pickup.pd` | Devin |
 | `wall.pd` | Devin |
-| `sequencer.pd` | Partner |
+| `sequencer.pd` | Joey |
 | `MockMidterm.pd` | Coordinated - only one person edits at a time |
 
 Only touch your own files. If you need to change the main patch, message the other person first.
