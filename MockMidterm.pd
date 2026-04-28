@@ -1,4 +1,4 @@
-#N canvas 2877 44 1280 1030 10;
+#N canvas -8 600 731 536 10;
 #X text 30 15 MockMidterm.pd v2 - NES Sound Chip Emulation;
 #X text 30 40 CMPM 125 Mock Midterm | Devin + Joey | Pure Data + OSC from Unity;
 #X text 30 75 INSTRUCTIONS:;
@@ -97,7 +97,7 @@
 #X text 578 409 trig: /unity/tempo \, /unity/playseq;
 #X obj 630 470 sequencer;
 #X obj 610 430 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 730 445 pack f 20;
+#X obj 722 453 pack f 20;
 #X obj 730 480 line~;
 #X obj 630 510 *~;
 #X obj 250 555 +~;
@@ -135,10 +135,10 @@
 #X obj 870 140 bng 25 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 905 145 s oscwall;
 #X text 870 175 Sequencer start (1) / stop (0):;
-#X msg 870 200 1;
+#X msg 871 200 1;
 #X msg 905 200 0;
 #X obj 945 200 s oscplayseq;
-#X text 870 225 Sequencer tempo (ms - click and drag to adjust):;
+#X text 871 224 Sequencer tempo (ms - click and drag to adjust):;
 #X obj 940 245 s osctempo;
 #X text 30 830 NOTES:;
 #X text 30 858 - Each voice listens internally via [r osctrig] / [r oscwall] / [r osctempo] / [r oscplayseq].;
