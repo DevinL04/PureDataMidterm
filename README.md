@@ -145,7 +145,7 @@ Tell the other person in chat when you're done so they can pull.
 ## Suggested order of work
 
 1. **One of us** copies the OSC receive subpatch from `MockMidterm_reference.pd` into `MockMidterm.pd`, adds comments, sets up the mixer (inlets -> `*~` for per-sound volume -> sum -> `dac~`), and instantiates empty `[pickup] [wall] [sequencer]` boxes. Commit + push.
-2. **After pull**, we each open our own files and start building sounds. Devin on `pickup.pd` + `wall.pd`, partner on `sequencer.pd`.
+2. **After pull**, we each open our own files and start building sounds. Devin on `pickup.pd` + `wall.pd`, Joey on `sequencer.pd`.
 3. Commit after every working feature - one sound that plays cleanly on trigger = one commit.
 4. Test each sound in isolation before wiring into the main patch.
 5. Test from Unity: send OSC messages from the scene and confirm each sound responds correctly.
